@@ -1,0 +1,10 @@
+{
+    "name": "example",
+    "version": "1.0.0",
+    "license": "MIT",
+    "devDependencies": {
+      "@citizenfx/client": "^2.0.6043-1",
+      "@citizenfx/server": "^2.0.6043-1"
+    }
+  }
+  

@@ -1,0 +1,24 @@
+{
+  "name": "fivem-ts-boilerplate",
+  "version": "1.0.0",
+  "author": "Natan Fernandes (natan-fernandes @github)",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "node esbuild.config.js"
+  },
+  "devDependencies": {
+    "@citizenfx/client": "^2.0.6043-1",
+    "@citizenfx/server": "^2.0.6043-1",
+    "@types/node": "^18.11.17",
+    "esbuild": "^0.15.16",
+    "esbuild-plugin-copy": "^2.0.1",
+    "esbuild-plugin-fileloc": "^0.0.6",
+    "prisma": "^4.8.0",
+    "ts-loader": "^9.4.1",
+    "typescript": "^4.9.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.8.0"
+  }
+}

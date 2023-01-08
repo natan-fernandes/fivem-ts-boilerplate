@@ -1,0 +1,12 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  engineType = "binary" //! This is mandatory! Prisma won't work if its bundled as a node library.
+}
+
+datasource db {
+  provider = "postgresql"
+  url = env("DATABASE_URL")
+}
