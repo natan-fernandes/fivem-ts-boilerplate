@@ -6,7 +6,7 @@ with TypeScript in FiveM scripting. It contains helpful utilities such as:
 * emitNetPromise (client)
 * onNetPromise (server)
 * prisma (server)
-* NUI with React + Vite
+* NUI with React + Vite (credits to [project-error](https://github.com/project-error/fivem-react-boilerplate-lua))
 
 
 ## Requirements
