@@ -1,19 +1,12 @@
+const resourceName = process.argv.slice(2)[0];
+if (!resourceName) throw new Error('❌ Resource name should be provided. Usage: yarn build <resourceName>');
+
 const path = require('path');
 const esbuild = require('esbuild');
 const { filelocPlugin } = require("esbuild-plugin-fileloc");
 const { copy } = require('esbuild-plugin-copy');
 
-const root = path.resolve(__dirname);
-const resourcesPath = path.resolve(__dirname, 'resources');
-const currentResourcePath = resource => path.resolve(resourcesPath, resource, 'src');
-
-//* Edit here
-const serverFolder = path.resolve(root, 'dist');
-const serverResourcesPath = resource => path.resolve(serverFolder, 'resources', '[local]', resource);
-//*---
-
-const resourceName = process.argv.slice(2)[0];
-if (!resourceName) throw new Error('❌ Resource name should be provided. Usage: yarn build <resourceName>');
+const { currentResourcePath, serverResourcesPath } = require('.');
 
 const entry = currentResourcePath(resourceName);
 const output = serverResourcesPath(resourceName);
@@ -28,16 +21,23 @@ esbuild.build({
   plugins: [
     copy({
       resolveFrom: 'cwd',
-      assets: [{
-        from: [`./resources/${resourceName}/*.lua`],
-        to: [output],
-        keepScructure: true
-      },
-      {
-        from: [`${entry}/stream/**/*`],
-        to: [path.resolve(output, 'stream')],
-        keepScructure: true
-      }]
+      assets: [
+        {
+          from: [`./resources/${resourceName}/*.lua`],
+          to: [output],
+          keepScructure: true
+        },
+        {
+          from: [`./resources/${resourceName}/src/stream/**/*`],
+          to: [path.resolve(output, 'stream')],
+          keepScructure: true
+        },
+        {
+          from: [`./resources/${resourceName}/src/web/dist/**/*`],
+          to: [path.resolve(output, 'nui')],
+          keepScructure: true
+        }
+      ]
     })
   ]
 })
