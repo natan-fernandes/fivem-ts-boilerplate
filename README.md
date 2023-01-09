@@ -16,12 +16,15 @@ with TypeScript in FiveM scripting. It contains helpful utilities such as:
 
 ## Getting Started
 First clone the repository somewhere near your server folder, 
-then point `serverFolder` at `esbuild.config.js` to your server folder.
-You can also change `[local]` at `serverResourcesPath` to any desired name, that's 
+then point `serverFolder` in `esbuild.config.js` to your server folder.
+You can also change `[local]` in `serverResourcesPath` to any desired name, that's 
 the output folder of your resources.  
-Run `yarn` to install the dependencies and `yarn build <resourceName>` to build your resource.  
+Run `yarn` in the root folder to install the dependencies and `yarn build <resourceName>` to build your resource.  
 
-You can build the NUI separately by going running `yarn build-nui <resourceName>`  
+You can build the NUI separately by going running `yarn build-nui <resourceName>` in the root folder  
+
+**NOTE:**
+> `build-nui` will only build the web project and NOT copy the bundle to your server's resource folder. Running `yarn build <resource>` on the root folder will copy everything to your server's resource folder including the NUI bundle IF it's was built beforewards.
 
 ### Installation
 *The boilerplate was made using `yarn` but is still compatible with
