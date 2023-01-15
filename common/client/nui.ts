@@ -1,2 +1,2 @@
-export const sendNuiMessage = (type: string, data: any) => 
-  SendNuiMessage(JSON.stringify({type: type, value: data}));
+export const sendNuiMessage = (action: string, data: any) => 
+  SendNuiMessage(JSON.stringify({action: action, data: data}));
