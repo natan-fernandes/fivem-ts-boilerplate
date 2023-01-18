@@ -11,6 +11,14 @@ const { currentResourcePath, serverResourcesPath } = require('.');
 const entry = currentResourcePath(resourceName);
 const output = serverResourcesPath(resourceName);
 
+const watch = process.argv.slice(3)[0];
+const watchConfig = (side) => watch && {
+  onRebuild(err, result) {
+    if (err) console.error(err)
+    else console.log(`👀 [${side}]: Built successfully!`)
+  }
+};
+
 esbuild.build({
   entryPoints: [`${entry}/client/client.ts`],
   outdir: output,
@@ -18,6 +26,7 @@ esbuild.build({
   minify: false,
   format: 'esm',
   target: ['ES2017'],
+  watch: watchConfig('client'),
   plugins: [
     copy({
       resolveFrom: 'cwd',
@@ -53,6 +62,7 @@ esbuild.build({
   keepNames: true,
   target: ['node16'],
   platform: 'node',
+  watch: watchConfig('server'),
   plugins: [filelocPlugin()] //? Necessary to prisma be able to get __dirname
 })
 .then(() => console.log('🚀 [server]: Built successfully!'))
