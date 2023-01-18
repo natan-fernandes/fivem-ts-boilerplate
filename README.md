@@ -24,7 +24,9 @@ Run `yarn` in the root folder to install the dependencies and `yarn build <resou
 You can build the NUI separately by going running `yarn build-nui <resourceName>` in the root folder  
 
 **NOTE:**
-> `build-nui` will only build the web project and NOT copy the bundle to your server's resource folder. Running `yarn build <resource>` on the root folder will copy everything to your server's resource folder including the NUI bundle IF it's was built beforewards.
+> `build-nui` will only build the web project and NOT copy the bundle to your server's resource folder. Running `yarn build <resource>` on the root folder will copy everything to your server's resource folder including the NUI bundle IF it's was built beforewards.  
+
+`yarn build <resourceName> <true>` will enable watch mode.
 
 ### Installation
 *The boilerplate was made using `yarn` but is still compatible with
