@@ -25,7 +25,7 @@ esbuild.build({
   bundle: true,
   minify: false,
   format: 'esm',
-  target: ['ES2017'],
+  target: ['ES2021'],
   watch: watchConfig('client'),
   plugins: [
     copy({

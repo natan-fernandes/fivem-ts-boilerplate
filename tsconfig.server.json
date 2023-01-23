@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
     "noImplicitAny": false,
-    "module": "ES2015",
-    "target": "es6",
+    "module": "ES2020",
+    "target": "ES2021",
     "allowJs": true,
-    "lib": ["es2021"],
+    "lib": ["ES2021"],
     "types": ["@citizenfx/server", "@types/node"],
-    "moduleResolution": "node"
+    "moduleResolution": "Node16"
   },
   "exclude": ["**/node_modules"]
 }

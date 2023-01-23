@@ -4,10 +4,10 @@
     "outDir": "./",
     "sourceMap": true,
     "noImplicitAny": false,
-    "module": "commonjs",
-    "target": "es6",
+    "module": "ES2020",
+    "target": "ES2021",
     "allowJs": true,
-    "lib": ["es2021"],
+    "lib": ["ES2021"],
     "types": ["@citizenfx/client", "@types/node"],
     "moduleResolution": "node",
     "paths": {
