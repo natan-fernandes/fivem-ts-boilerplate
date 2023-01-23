@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import { onNetPromise } from '@common/server';
+import { onNetPromise } from '@common/shared';
 
 const prisma = new PrismaClient(); 
 
