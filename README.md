@@ -3,9 +3,9 @@
 This repository is a basic boilerplate for getting started
 with TypeScript in FiveM scripting. It contains helpful utilities such as:
 * delay
-* emitNetPromise (client)
-* onNetPromise (server)
-* prisma (server)
+* emitNetPromise
+* onNetPromise
+* Prisma ORM
 * NUI with React + Vite (credits to [project-error](https://github.com/project-error/fivem-react-boilerplate-lua))
 
 
