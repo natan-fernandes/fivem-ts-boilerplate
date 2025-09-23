@@ -1,0 +1,116 @@
+---
+alwaysApply: true
+description: Regra para controle de versionamento e commits padronizados
+---
+
+# Controle de Versionamento
+
+## Princípios Fundamentais
+
+**Cada tarefa deve resultar em 1 commit único** com mensagem padronizada seguindo o formato conventional commits.
+
+## Formato de Commit Obrigatório
+
+### Estrutura da Mensagem
+```
+tipo: [descrição específica da ação/problema]
+```
+
+### Tipos de Commit
+
+#### Para Novas Funcionalidades
+- **feat**: Nova funcionalidade ou recurso
+- **feat: [ação realizada]**
+
+#### Para Correções
+- **fix**: Correção de bug ou problema
+- **fix: [problema resolvido]**
+
+### Exemplos Práticos
+
+#### Funcionalidades (feat)
+```
+feat: adicionar sistema de autenticação
+feat: implementar validação de formulário
+feat: criar componente de navegação
+feat: adicionar endpoint de usuários
+feat: implementar cache de dados
+```
+
+#### Correções (fix)
+```
+fix: corrigir erro de validação de email
+fix: resolver problema de performance na listagem
+fix: corrigir vazamento de memória no componente
+fix: resolver conflito de dependências
+fix: corrigir bug de cálculo de preço
+```
+
+## Regras de Commit
+
+### 1. Um Commit por Tarefa
+- **NUNCA** faça commits com múltiplas funcionalidades
+- **SEMPRE** faça um commit por tarefa concluída
+- **SEPARAR** commits de funcionalidade e correção
+
+### 2. Mensagem Descritiva
+- **SEJA** específico na descrição
+- **USE** verbo no infinitivo (adicionar, implementar, corrigir)
+- **EVITE** mensagens vagas como "atualizações" ou "mudanças"
+
+### 3. Escopo da Tarefa
+- **DEFINA** claramente o que foi feito
+- **INCLUA** o componente ou área afetada quando relevante
+- **MANTENHA** a mensagem concisa mas informativa
+
+## Processo de Commit
+
+### 1. Antes do Commit
+- **VERIFIQUE** se a tarefa está completa
+- **TESTE** se a funcionalidade está funcionando
+- **REVISE** se não há código desnecessário
+
+### 2. Durante o Commit
+- **STAGE** apenas os arquivos relacionados à tarefa
+- **ESCREVA** mensagem seguindo o formato padrão
+- **CONFIRME** que a mensagem está clara
+
+### 3. Após o Commit
+- **VERIFIQUE** se o commit foi criado corretamente
+- **DOCUMENTE** se necessário para a próxima tarefa
+
+## Exemplos de Boa Prática
+
+### ✅ Corretos
+```
+feat: adicionar sistema de notificações push
+feat: implementar filtros de busca avançada
+feat: criar dashboard de estatísticas
+fix: corrigir erro de timeout na API
+fix: resolver problema de layout responsivo
+```
+
+### ❌ Incorretos
+```
+feat: atualizações
+feat: várias mudanças
+fix: bugs
+fix: correções gerais
+feat: sistema completo de usuários e autenticação e permissões
+```
+
+## Integração com Desenvolvimento
+
+### Fluxo de Trabalho
+1. **Implementar** uma funcionalidade específica
+2. **Testar** se está funcionando corretamente
+3. **Fazer commit** com mensagem padronizada
+4. **Passar** para a próxima funcionalidade
+5. **Repetir** o processo
+
+### Benefícios
+- **Histórico claro** de desenvolvimento
+- **Facilita** rollbacks específicos
+- **Melhora** rastreabilidade de bugs
+- **Padroniza** comunicação da equipe
+- **Facilita** geração de changelogs automáticos

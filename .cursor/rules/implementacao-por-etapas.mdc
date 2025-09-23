@@ -1,0 +1,74 @@
+---
+alwaysApply: true
+description: Regra para implementação de funcionalidades por etapas
+---
+
+# Implementação de Funcionalidades por Etapas
+
+## Princípios Fundamentais
+
+**SEMPRE implemente uma funcionalidade por vez.** Divida prompts grandes e confirme o escopo antes de gerar qualquer código.
+
+## Processo Obrigatório
+
+### 1. Análise e Planejamento
+- **Analise** o prompt completo primeiro
+- **Identifique** todas as funcionalidades solicitadas
+- **Divida** em etapas menores e específicas
+- **Priorize** a ordem de implementação
+
+### 2. Confirmação de Escopo
+Antes de qualquer implementação:
+- **Apresente** o plano dividido em etapas
+- **Confirme** se o escopo está correto
+- **Peça** aprovação para cada etapa
+- **Aguarde** confirmação antes de prosseguir
+
+### 3. Implementação Sequencial
+- **Implemente** apenas uma funcionalidade por vez
+- **Teste** cada funcionalidade antes de prosseguir
+- **Valide** que está funcionando corretamente
+- **Passe** para a próxima etapa apenas após conclusão
+
+## Exemplo de Aplicação
+
+### Prompt Grande (❌ NÃO fazer):
+"Crie um sistema de inventário com drag-and-drop, categorias, busca, filtros, ordenação, paginação, validação de itens, sistema de moedas, notificações, histórico de transações e relatórios"
+
+### Abordagem Correta (✅ FAZER):
+1. **Etapa 1**: Estrutura básica do inventário
+2. **Etapa 2**: Sistema de categorias
+3. **Etapa 3**: Funcionalidade de busca
+4. **Etapa 4**: Sistema de filtros
+5. **Etapa 5**: Drag-and-drop
+6. **Etapa 6**: Validações
+7. **Etapa 7**: Sistema de moedas
+8. **Etapa 8**: Notificações
+9. **Etapa 9**: Histórico
+10. **Etapa 10**: Relatórios
+
+## Regras de Ouro
+
+1. **NUNCA** implemente múltiplas funcionalidades simultaneamente
+2. **SEMPRE** confirme o escopo antes de começar
+3. **SEMPRE** divida prompts complexos em etapas
+4. **SEMPRE** aguarde aprovação para cada etapa
+5. **SEMPRE** teste uma funcionalidade antes de prosseguir
+
+## Quando Aplicar
+
+Esta regra se aplica a:
+- Desenvolvimento de novas funcionalidades
+- Refatoração de código existente
+- Correção de bugs complexos
+- Qualquer tarefa que envolva múltiplos componentes
+- Integração de sistemas
+
+## Benefícios
+
+- **Código mais limpo** e focado
+- **Debugging mais fácil**
+- **Testes mais eficazes**
+- **Menor chance de erros**
+- **Melhor compreensão do progresso**
+- **Facilita revisões e feedback**

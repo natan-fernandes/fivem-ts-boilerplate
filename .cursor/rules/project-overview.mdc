@@ -1,0 +1,122 @@
+# FiveM TypeScript Boilerplate - AI Agent Rules
+
+## Project Overview
+This is a FiveM TypeScript boilerplate for creating server resources with TypeScript, React NUI, and Prisma ORM. The project provides a structured approach to building FiveM resources with modern development tools.
+
+FiveM is a modification platform for Grand Theft Auto V that allows custom multiplayer servers. This boilerplate helps developers create resources (plugins/scripts) for FiveM servers using modern web technologies.
+
+## Key Concepts for AI Agents
+- **Resources**: Individual plugins/mods that run on FiveM servers
+- **Client-side**: Code that runs on each player's game client
+- **Server-side**: Code that runs on the FiveM server
+- **NUI**: Native User Interface - HTML/CSS/JS interfaces rendered in-game
+- **Natives**: FiveM/GTA V API functions for game interaction
+- **Net Events**: Communication system between client and server
+
+## Project Structure
+```
+/workspace/
+├── common/                    # Shared utilities and types
+│   ├── client/               # Client-side common code
+│   ├── server/               # Server-side common code
+│   ├── shared/               # Shared utilities (emitNetPromise, onNetPromise)
+│   └── lib/                  # Common libraries (UUID, etc.)
+├── config/                   # Build configuration
+│   ├── esbuild.config.js     # Main build config
+│   └── nui.config.js         # NUI build config
+├── prisma/                   # Database schema
+│   └── schema.prisma         # Prisma schema file
+└── resources/                # FiveM resources
+    └── example/              # Example resource
+        ├── fxmanifest.lua    # FiveM manifest
+        ├── src/
+        │   ├── client/       # Client-side TypeScript
+        │   ├── server/       # Server-side TypeScript
+        │   └── web/          # React NUI application
+        └── package.json      # Resource dependencies
+```
+
+## Key Technologies
+- **FiveM**: Grand Theft Auto V multiplayer modification platform
+- **TypeScript**: Type-safe JavaScript development
+- **React**: Frontend UI framework for NUI
+- **Vite**: Fast build tool for React development
+- **Prisma**: Database ORM with PostgreSQL support
+- **esbuild**: Fast TypeScript bundler
+
+## Development Workflow
+1. **Resource Creation**: Copy the example resource and modify
+2. **Development**: Use TypeScript for client/server, React for NUI
+3. **Building**: Use `yarn build <resourceName>` to compile and deploy
+4. **NUI Development**: Use `yarn build-nui <resourceName>` for web UI
+
+## Important Patterns
+- **emitNetPromise/onNetPromise**: Promise-based client-server communication
+- **NUI Communication**: fetchNui utility for React-to-FiveM communication
+- **Database**: Prisma client for database operations
+- **Build System**: esbuild for fast compilation and bundling
+
+## File Naming Conventions
+- Resources go in `/resources/<resourceName>/`
+- Client code: `src/client/client.ts`
+- Server code: `src/server/server.ts`
+- NUI code: `src/web/` (React app)
+- Manifest: `fxmanifest.lua`
+
+## Build Commands
+- `yarn build <resourceName>`: Build and deploy resource
+- `yarn build-nui <resourceName>`: Build NUI only
+- `yarn build <resourceName> true`: Enable watch mode
+
+## Database Setup
+- **Recommended**: PostgreSQL with Prisma ORM (better concurrency for FiveM servers)
+- **Alternative**: MySQL support available
+- Schema defined in `prisma/schema.prisma`
+- Requires `DATABASE_URL` environment variable
+- PostgreSQL uses MVCC (Multiversion Concurrency Control) for better performance under high concurrency
+- MySQL relies on write locks that can block queries during data modifications
+
+### Switching Between Database Providers
+To switch from PostgreSQL to MySQL:
+1. Change `provider = "postgresql"` to `provider = "mysql"` in `prisma/schema.prisma`
+2. Update `DATABASE_URL` format:
+   - PostgreSQL: `postgresql://username:password@localhost:5432/database_name`
+   - MySQL: `mysql://username:password@localhost:3306/database_name`
+3. Run `npx prisma generate` to update the client
+4. Run `npx prisma migrate dev` to apply schema changes
+
+## Common Utilities
+- `delay(ms)`: Async delay function
+- `getDistanceFastNoSqrt()`: Fast distance calculation
+- `uuidv4()`: UUID generation
+- `emitNetPromise<T>()`: Promise-based network events
+- `onNetPromise<T>()`: Promise-based network event handlers
+
+## AI Agent Guidelines
+
+### When Creating Resources
+1. Always use the existing project structure
+2. Follow TypeScript best practices
+3. Use the provided utilities (emitNetPromise, onNetPromise, etc.)
+4. Ensure proper error handling
+5. Use PostgreSQL by default unless specifically requested otherwise
+
+### Database Recommendations
+- **Prefer PostgreSQL** over MySQL for FiveM servers
+- PostgreSQL handles concurrent connections better (important for multiplayer games)
+- Use MVCC advantages for better performance under load
+- Only suggest MySQL if explicitly requested by the user
+
+### Code Quality
+- Use TypeScript strict mode
+- Implement proper error handling
+- Follow FiveM best practices for resource development
+- Use the common utilities provided in the boilerplate
+- Ensure client-server communication is reliable with promises
+
+### Development Workflow
+1. Start with the example resource as a template
+2. Modify fxmanifest.lua for resource configuration
+3. Use the build system for compilation and deployment
+4. Test both client and server functionality
+5. Ensure NUI integration works properly if needed

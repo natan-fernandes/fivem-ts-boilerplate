@@ -1,0 +1,181 @@
+---
+alwaysApply: true
+description: Regra para controle rigoroso de TypeScript sem supressão de erros
+---
+
+# Controle Rigoroso de TypeScript
+
+## Princípios Fundamentais
+
+**NUNCA use `@ts-ignore` sem justificativa documentada.** Warnings devem ser tratados como erros críticos que precisam ser resolvidos.
+
+## Regras Obrigatórias
+
+### 1. Proibição de `@ts-ignore`
+- **NUNCA** use `@ts-ignore` sem comentário explicativo
+- **SEMPRE** documente o motivo quando for absolutamente necessário
+- **PREFIRA** resolver o problema de tipo em vez de suprimi-lo
+
+### 2. Tratamento de Warnings
+- **WARNINGS SÃO ERROS** - trate todos os warnings como erros críticos
+- **RESOLVA** todos os warnings antes de prosseguir
+- **NÃO IGNORE** nenhum aviso do TypeScript
+
+### 3. Documentação de Exceções
+Quando `@ts-ignore` for absolutamente necessário:
+
+```typescript
+// @ts-ignore - Motivo: API externa sem tipos disponíveis, 
+// será substituído quando tipos oficiais forem lançados
+const result = externalLibrary.functionWithoutTypes();
+```
+
+## Alternativas ao `@ts-ignore`
+
+### 1. Type Assertions
+```typescript
+// ❌ Evitar
+// @ts-ignore
+const value = someValue;
+
+// ✅ Preferir
+const value = someValue as string;
+```
+
+### 2. Type Guards
+```typescript
+// ❌ Evitar
+// @ts-ignore
+const result = data.property;
+
+// ✅ Preferir
+if (data && 'property' in data) {
+  const result = data.property;
+}
+```
+
+### 3. Declarações de Tipo
+```typescript
+// ✅ Criar arquivo de declaração
+declare module 'library-without-types' {
+  export function someFunction(): string;
+}
+```
+
+### 4. Configuração de Tipos
+```typescript
+// ✅ Usar tipos genéricos quando apropriado
+function processData<T>(data: T): T {
+  return data;
+}
+```
+
+## Processo de Resolução
+
+### 1. Identificação do Problema
+- **ANALISE** o erro/warning específico
+- **ENTENDA** a causa raiz do problema de tipo
+- **DOCUMENTE** o que está acontecendo
+
+### 2. Busca de Soluções
+- **PESQUISE** tipos oficiais disponíveis
+- **VERIFIQUE** se há declarações de tipo no @types
+- **CONSIDERE** refatoração para tipos mais seguros
+
+### 3. Implementação da Solução
+- **IMPLEMENTE** a solução de tipo adequada
+- **TESTE** se a solução funciona corretamente
+- **VERIFIQUE** se não introduziu novos problemas
+
+## Exemplos de Boas Práticas
+
+### ✅ Correto
+```typescript
+// Type assertion com contexto
+const userData = response.data as UserData;
+
+// Type guard para verificação segura
+if (typeof value === 'string' && value.length > 0) {
+  processString(value);
+}
+
+// Interface bem definida
+interface ApiResponse<T> {
+  data: T;
+  status: number;
+  message: string;
+}
+```
+
+### ❌ Incorreto
+```typescript
+// @ts-ignore sem explicação
+// @ts-ignore
+const result = someFunction();
+
+// Ignorando warnings
+const unused = someValue; // Warning: 'unused' is declared but never used
+
+// Tipos any desnecessários
+const data: any = response.data;
+```
+
+## Configuração TypeScript
+
+### 1. Configuração Rigorosa
+```json
+{
+  "compilerOptions": {
+    "strict": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "exactOptionalPropertyTypes": true
+  }
+}
+```
+
+### 2. Tratamento de Warnings como Erros
+```json
+{
+  "compilerOptions": {
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true
+  }
+}
+```
+
+## Benefícios
+
+- **Código mais seguro** e previsível
+- **Melhor manutenibilidade** a longo prazo
+- **Redução de bugs** em runtime
+- **Melhor experiência** de desenvolvimento
+- **Facilita refatoração** futura
+
+## Quando `@ts-ignore` Pode Ser Aceito
+
+### Cenários Extremamente Raros
+1. **APIs externas** sem tipos disponíveis
+2. **Bibliotecas legadas** sem suporte a TypeScript
+3. **Integrações com código JavaScript** não migrado
+4. **Workarounds temporários** com prazo definido para resolução
+
+### Formato Obrigatório
+```typescript
+// @ts-ignore - Motivo: [explicação detalhada] 
+// Data limite para resolução: [data]
+// Responsável: [desenvolvedor]
+const problematicCode = legacyFunction();
+```
+
+## Aplicação
+
+Esta regra se aplica a:
+- Todos os arquivos TypeScript (.ts, .tsx)
+- Configurações do projeto
+- Bibliotecas e dependências
+- Código de teste
+- Scripts de build
